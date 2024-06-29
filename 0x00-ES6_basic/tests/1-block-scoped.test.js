@@ -1,4 +1,4 @@
-import taskBlock from './1-block-scoped.js';
+import taskBlock from '../1-block-scoped';
 
 describe('taskBlock function', () => {
   it('should return [true, true] when trueOrFalse is true', () => {
