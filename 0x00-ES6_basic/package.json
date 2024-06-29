@@ -2,10 +2,10 @@
   "name": "0x00-es6_basic",
   "version": "1.0.0",
   "description": "ES6 Basics project",
-  "main": "1-main.js",
-  "type": "commonjs",
+  "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "node 1-main.js",
+    "dev": "node 0-main.js",
     "test": "jest",
     "lint": "eslint .",
     "clear-cache": "jest --clearCache"
