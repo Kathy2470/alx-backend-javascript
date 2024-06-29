@@ -5,9 +5,9 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "dev": "node 0-main.js 1-main.js",
+    "dev": "node 1-main.js",
     "test": "jest",
-    "lint": "eslint 0-constants.js 0-main.js",
+    "lint": "eslint 1-block-scoped.js 1-main.js",
     "clear-cache": "jest --clearCache"
   },
   "dependencies": {
