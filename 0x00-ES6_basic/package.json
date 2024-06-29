@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "ES6 Basics project",
   "main": "index.js",
-  "type": "commonjs",
+  "type": "module",
   "scripts": {
-    "dev": "node 0-main.js",
+    "dev": "node 0-main.js 1-main.js",
     "test": "jest",
     "lint": "eslint 0-constants.js 0-main.js",
     "clear-cache": "jest --clearCache"
@@ -13,8 +13,7 @@
   "dependencies": {
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
-    "@babel/preset-env": "^7.10.2",
-    "babel-jest": "^27.2.4"
+    "@babel/preset-env": "^7.10.2"
   },
   "babel": {
     "presets": [
@@ -30,6 +29,7 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
+    "babel-jest": "^29.7.0",
     "eslint": "^8.0.1",
     "eslint-config-standard": "^17.0.0",
     "globals": "^13.12.1",
