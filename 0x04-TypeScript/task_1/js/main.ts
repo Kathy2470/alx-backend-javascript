@@ -1,38 +1,19 @@
-import { Teacher } from './teacher';
-
-interface Teacher {
+class Teacher implements TeacherInterface {
   readonly firstName: string;
   readonly lastName: string;
   fullTimeEmployee: boolean;
   location: string;
-  [key: string]: any;
+  yearsOfExperience?: number;
+
+  constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string, yearsOfExperience?: number) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.fullTimeEmployee = fullTimeEmployee;
+    this.location = location;
+    this.yearsOfExperience = yearsOfExperience;
+  }
+
+  greet(): string {
+    return `Hello, my name is ${this.firstName} ${this.lastName} and I'm a teacher at ${this.location}.`;
+  }
 }
-
-const teacher1: Teacher = {
-  firstName: 'John',
-  fullTimeEmployee: false,
-  lastName: 'Doe',
-  location: 'London',
-  contract: false,
-};
-
-const teacher2: Teacher = {
-  firstName: 'Jane',
-  fullTimeEmployee: true,
-  lastName: 'Smith',
-  location: 'New York',
-  yearsOfExperience: 5,
-};
-
-const teacher3: Teacher = {
-  firstName: 'Bob',
-  fullTimeEmployee: false,
-  lastName: 'Johnson',
-  location: 'Paris',
-  contract: true,
-  yearsOfExperience: 10,
-};
-
-console.log(teacher1);
-console.log(teacher2);
-console.log(teacher3);
