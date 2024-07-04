@@ -1,28 +1,27 @@
-interface TeacherInterface {
-  readonly firstName: string;
-  readonly lastName: string;
-  fullTimeEmployee: boolean;
+interface Student {
+  firstName: string;
+  lastName: string;
   location: string;
-  yearsOfExperience?: number;
-  greet(): string;
+  grades: number[];
 }
 
-class Teacher implements TeacherInterface {
-  readonly firstName: string;
-  readonly lastName: string;
-  fullTimeEmployee: boolean;
-  location: string;
-  yearsOfExperience?: number;
+const studentsList: Student[] = [
+  // assume this array is populated with Student objects
+];
 
-  constructor(firstName: string, lastName: string, fullTimeEmployee: boolean, location: string, yearsOfExperience?: number) {
-    this.firstName = firstName;
-    this.lastName = lastName;
-    this.fullTimeEmployee = fullTimeEmployee;
-    this.location = location;
-    this.yearsOfExperience = yearsOfExperience;
-  }
-
-  greet(): string {
-    return `Hello, my name is ${this.firstName} ${this.lastName} and I'm a teacher at ${this.location}.`;
-  }
+function calculateAverageGrade(grades: number[]): number {
+  return grades.reduce((acc, grade) => acc + grade, 0) / grades.length;
 }
+
+function filterStudentsByGradeRange(students: Student[], minGrade: number, maxGrade: number): Student[] {
+  return students.filter((student) => {
+    const averageGrade = calculateAverageGrade(student.grades);
+    return averageGrade >= minGrade && averageGrade <= maxGrade;
+  });
+}
+
+const filteredStudents = filterStudentsByGradeRange(studentsList, 80, 90);
+console.log('Filtered students by grade range (80-90):');
+filteredStudents.forEach((student) => {
+  console.log(`${student.firstName} ${student.lastName} - Average grade: ${calculateAverageGrade(student.grades).toFixed(2)}`);
+});
