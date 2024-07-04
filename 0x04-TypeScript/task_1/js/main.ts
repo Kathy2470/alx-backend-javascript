@@ -1,3 +1,12 @@
+interface TeacherInterface {
+  readonly firstName: string;
+  readonly lastName: string;
+  fullTimeEmployee: boolean;
+  location: string;
+  yearsOfExperience?: number;
+  greet(): string;
+}
+
 class Teacher implements TeacherInterface {
   readonly firstName: string;
   readonly lastName: string;
