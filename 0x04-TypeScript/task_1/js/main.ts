@@ -6,33 +6,26 @@ interface Student {
 }
 
 const studentsList: Student[] = [
-  {
-    firstName: 'John',
-    lastName: 'Doe',
-    location: 'New York',
-    grades: [80, 90, 70]
-  },
-  {
-    firstName: 'Jane',
-    lastName: 'Doe',
-    location: 'Los Angeles',
-    grades: [90, 80, 95]
-  }
+  // assume this array is populated with Student objects
 ];
 
-function calculateAverageGrade(grades: number[]): number {
-  return grades.reduce((acc, grade) => acc + grade, 0) / grades.length;
+function findTopStudent(students: Student[]): Student | undefined {
+  const studentsWithAverageGrades = students.map((student) => ({
+    ...student,
+    averageGrade: student.grades.reduce((acc, grade) => acc + grade, 0) / student.grades.length,
+  }));
+
+  return studentsWithAverageGrades.reduce((maxStudent, currentStudent) => {
+    if (!maxStudent || currentStudent.averageGrade > maxStudent.averageGrade) {
+      return currentStudent;
+    }
+    return maxStudent;
+  }, undefined);
 }
 
-function filterStudentsByGradeRange(students: Student[], minGrade: number, maxGrade: number): Student[] {
-  return students.filter((student) => {
-    const averageGrade = calculateAverageGrade(student.grades);
-    return averageGrade >= minGrade && averageGrade <= maxGrade;
-  });
+const topStudent = findTopStudent(studentsList);
+if (topStudent) {
+  console.log(`Top student: ${topStudent.firstName} ${topStudent.lastName} with an average grade of ${topStudent.grades.reduce((acc, grade) => acc + grade, 0) / topStudent.grades.length}`);
+} else {
+  console.log('No students found');
 }
-
-const filteredStudents = filterStudentsByGradeRange(studentsList, 80, 90);
-console.log('Filtered students by grade range (80-90):');
-filteredStudents.forEach((student) => {
-  console.log(`${student.firstName} ${student.lastName} - Average grade: ${calculateAverageGrade(student.grades).toFixed(2)}`);
-});
