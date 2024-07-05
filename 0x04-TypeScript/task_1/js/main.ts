@@ -6,7 +6,18 @@ interface Student {
 }
 
 const studentsList: Student[] = [
-  // assume this array is populated with Student objects
+  {
+    firstName: 'John',
+    lastName: 'Doe',
+    location: 'New York',
+    grades: [80, 90, 70]
+  },
+  {
+    firstName: 'Jane',
+    lastName: 'Doe',
+    location: 'Los Angeles',
+    grades: [90, 80, 95]
+  }
 ];
 
 function calculateAverageGrade(grades: number[]): number {
